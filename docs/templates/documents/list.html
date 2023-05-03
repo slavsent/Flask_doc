@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Documents list
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h1>Documents (count: {{ count_documents }}):</h1>
+            {% for document in documents %}
+                <ul>
+                    <li>
+                        <a href="{{ url_for('documents_app.details', document_id=document.id) }}">{{ document.name }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+        <hr>
+        <a href="{{ url_for('documents_app.create') }}">Create new</a>
+    </div>
+{% endblock %}
