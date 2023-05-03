@@ -75,11 +75,13 @@ def document_edit(document_id):
         else:
             vers = 0
             for docs in docs_version:
-                if (docs.name == form.name.data.strip()) and (docs.name == form.body.data):
+                if (docs.name == form.name.data.strip()) and (docs.body == form.body.data):
                     error.append("Такая версия уже есть")
                     docs.version = 'D'
                     docs.id_main = None
                     vers = None
+                    # если нужно тут можно сравнить с последней версией
+                    #if (docs_version[-1].name == form.name.data.strip()) and (if (docs_version[-1].name == form.body.data):
                     break
                 if int(docs.version) > vers:
                     vers = int(docs.version) + 1
